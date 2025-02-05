@@ -21,6 +21,8 @@ This project implements an **ultra-low latency high-frequency trading (HFT) syst
 │ Market │ ---> │ FPGA │ ---> │ GPU │ ---> │ Execution │ 
 │ Feed │        │ OrderBook│ │ ML Model │  │ Engine │ 
 └──────────┘ └──────────┘ └──────────┘ └────────────┘
+┌──────────┐ ┌──────────┐ ┌──────────┐ ┌────────────┐ │ Market │ ---> │ FPGA │ ---> │ GPU │ ---> │ Execution │ │ Feed │ │ OrderBook│ │ ML Model │ │ Engine │ └──────────┘ └──────────┘ └──────────┘ └────────────┘
+
 
 - **FPGA:** Processes live market data and updates order books at **sub-microsecond latencies**.
 - **GPU (CUDA):** Runs deep-learning-based predictions for arbitrage and trading strategies.
