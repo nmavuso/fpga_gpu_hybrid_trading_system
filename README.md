@@ -17,20 +17,20 @@ Features include:
 4. **High-frequency concurrency**: CPU must handle real-time data, FPGA partial updates, GPU calls, and risk enforcement simultaneously.
 
 ## Architecture
-    ┌─────────────────┐    ┌────────────────────────┐
-    │ Market Data Feed│    │ Model Weights, Risk Data│
-    └─────────────────┘    └────────────────────────┘
-              │                         │
-              ▼                         ▼
-┌────────────────────────┐      ┌─────────────────────────┐
-│   FPGA (Order Book)    │ ---> │  CPU (Pipeline Manager) │
-│ + DMA (Streaming Intf) │      │   Multi-Threaded Logic  │
-└────────────────────────┘      └─────────────────────────┘
-              │                          │
-              ▼                          ▼
-      ┌─────────────┐            ┌─────────────────┐
-      │ GPU (CUDA)   │ <-------->│ Risk & Strategy  │
-      └─────────────┘            └─────────────────┘
+                    ┌─────────────────┐    ┌────────────────────────┐
+                    │ Market Data Feed│    │ Model Weights, Risk Data│
+                    └─────────────────┘    └────────────────────────┘
+                              │                         │
+                              ▼                         ▼
+                ┌────────────────────────┐      ┌─────────────────────────┐
+                │   FPGA (Order Book)    │ ---> │  CPU (Pipeline Manager) │
+                │ + DMA (Streaming Intf) │      │   Multi-Threaded Logic  │
+                └────────────────────────┘      └─────────────────────────┘
+                              │                          │
+                              ▼                          ▼
+                      ┌─────────────┐            ┌─────────────────┐
+                      │ GPU (CUDA)   │ <-------->│ Risk & Strategy  │
+                      └─────────────┘            └─────────────────┘
 
 
 
