@@ -16,3 +16,29 @@ This project implements an **ultra-low latency high-frequency trading (HFT) syst
 - **Low-latency optimization**: Requires **CUDA streams & persistent kernels** to maintain a real-time trading pipeline.
 
 ## System Architecture
+
+┌──────────┐ ┌──────────┐ ┌──────────┐ ┌────────────┐ 
+│ Market │ ---> │ FPGA │ ---> │ GPU │ ---> │ Execution │ 
+│ Feed │        │ OrderBook│ │ ML Model │  │ Engine │ 
+└──────────┘ └──────────┘ └──────────┘ └────────────┘
+
+- **FPGA:** Processes live market data and updates order books at **sub-microsecond latencies**.
+- **GPU (CUDA):** Runs deep-learning-based predictions for arbitrage and trading strategies.
+- **CPU:** Handles control flow, logging, and backtesting.
+
+## Installation
+### Prerequisites
+- **NVIDIA CUDA 11+**  
+- **Xilinx / Intel FPGA board** (UltraScale+)  
+- **Verilog / VHDL toolchain (Vivado, Quartus)**  
+- **CMake & GCC**  
+- **Python 3.8+ (for AI-based trading models)**  
+
+### Clone & Build
+```bash
+git clone https://github.com/yourusername/fpga-gpu-hft.git
+cd fpga-gpu-hft
+mkdir build && cd build
+cmake ..
+make -j$(nproc)
+
